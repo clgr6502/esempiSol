@@ -1,0 +1,22 @@
+Utils.c
+void logger(const char *file, int line, const char *format, ...) {
+
+    if (debug_mode == 1) {
+        //Stampare il nome del file e il numero di riga
+        printf("   [%s:%d] ", file, line);
+
+        //Stampare il messaggio formattato con parametri variabili
+        va_list args;
+        va_start(args, format);
+        vprintf(format, args);
+        va_end(args);
+
+        printf("\n");
+    }
+}
+
+Conf.c
+int debug_mode = 0;
+
+Conf.h
+extern int debug_mode;
